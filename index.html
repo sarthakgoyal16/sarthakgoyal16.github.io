@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StudyMate – Peer Study Partner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="logo">📚 Study<span>Mate</span></div>
+  <nav id="nav">
+    <button data-page="discover" class="active">🔍 Discover</button>
+    <button data-page="requests">📨 Requests <b id="reqBadge" class="badge hidden">0</b></button>
+    <button data-page="chat">💬 Chat <b id="chatBadge" class="badge hidden">0</b></button>
+    <button data-page="create">✨ My Profile</button>
+  </nav>
+</header>
+
+<main>
+  <!-- DISCOVER -->
+  <section id="discover" class="page active">
+    <div class="hero">
+      <div>
+        <h1>Find your perfect study partner</h1>
+        <p>Match with college students who share your subjects, schedule and study style.</p>
+      </div>
+      <div class="stats">
+        <div><b id="stTotal">50</b><span>Students</span></div>
+        <div><b id="stConn">0</b><span>Connected</span></div>
+        <div><b id="stPend">0</b><span>Pending</span></div>
+      </div>
+    </div>
+    <div class="filters">
+      <input id="fSearch" type="search" placeholder="Search name, college, course...">
+      <select id="fSubject"><option value="">All subjects</option></select>
+      <select id="fYear"><option value="">Any year</option><option>1</option><option>2</option><option>3</option><option>4</option></select>
+      <select id="fMode"><option value="">Online / Offline</option><option>Online</option><option>Offline</option><option>Both</option></select>
+      <select id="fTime"><option value="">Any time</option><option>Morning</option><option>Afternoon</option><option>Evening</option><option>Night</option></select>
+      <select id="fSort"><option value="match">Best match</option><option value="name">Name A–Z</option></select>
+    </div>
+    <p id="count" class="muted"></p>
+    <div id="grid" class="grid"></div>
+  </section>
+
+  <!-- REQUESTS -->
+  <section id="requests" class="page">
+    <h2>Request status</h2>
+    <div class="tabs" id="reqTabs">
+      <button class="active" data-f="all">All</button>
+      <button data-f="received">Received</button>
+      <button data-f="sent">Sent</button>
+      <button data-f="pending">Pending</button>
+      <button data-f="accepted">Accepted</button>
+      <button data-f="declined">Declined</button>
+    </div>
+    <div id="reqList" class="list"></div>
+  </section>
+
+  <!-- CHAT -->
+  <section id="chat" class="page">
+    <div class="chatbox">
+      <aside id="chatList"></aside>
+      <div class="chatmain">
+        <div id="chatHead" class="chathead">Select a partner to start chatting</div>
+        <div id="msgs" class="msgs"></div>
+        <form id="msgForm" class="msgform">
+          <input id="msgInput" placeholder="Type a message..." autocomplete="off" disabled>
+          <button disabled>Send ➤</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREATE PROFILE -->
+  <section id="create" class="page">
+    <h2>Create your profile</h2>
+    <div class="two">
+      <form id="profForm" class="card form">
+        <label>Full name<input name="name" required maxlength="40"></label>
+        <label>Course / Branch<input name="course" required placeholder="e.g. B.Tech CSE"></label>
+        <label>College<input name="college" required></label>
+        <div class="row">
+          <label>Year
+            <select name="year"><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
+          <label>Study mode
+            <select name="mode"><option>Online</option><option>Offline</option><option>Both</option></select></label>
+          <label>Best time
+            <select name="time"><option>Morning</option><option>Afternoon</option><option>Evening</option><option>Night</option></select></label>
+        </div>
+        <label>Subjects (comma separated)<input name="subjects" required placeholder="Maths, DSA, Physics"></label>
+        <label>Study goal<input name="goal" required maxlength="80" placeholder="e.g. Crack placements"></label>
+        <label>About me<textarea name="bio" rows="3" maxlength="200"></textarea></label>
+        <button class="btn">💾 Save profile</button>
+      </form>
+      <div>
+        <h3 class="muted">Live preview</h3>
+        <div id="preview"></div>
+        <button id="resetBtn" class="btn ghost">🗑 Reset all demo data</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="toast" class="toast"></div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
